@@ -1,0 +1,74 @@
+﻿<Window
+    x:Class="MatInfo.GestionPersonnel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MatInfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="GestionPersonnel"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <local:ApplicationData x:Name="applicationData" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid
+            Grid.Row="0"
+            Margin="0,0,0,334"
+            Background="#FFB3AEAE">
+            <Label
+                x:Name="lbGestionPersonnel"
+                Height="70"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Gestion du personnel"
+                FontFamily="Adobe Gothic Std B"
+                FontSize="40" />
+
+        </Grid>
+        <DataGrid
+            x:Name="dgPersonnel"
+            Height="150"
+            Margin="10,181,10,0"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesPersonnels}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="1*"
+                    Binding="{Binding MailPerso}"
+                    Header="Email perso" />
+                <DataGridTextColumn
+                    Width="1*"
+                    Binding="{Binding NomPerso}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="1*"
+                    Binding="{Binding PrenomPerso}"
+                    Header="Prénom" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            x:Name="btModifPersonnel"
+            MaxHeight="50"
+            Margin="121,351,529,34"
+            Content="Modifier personnel" />
+        <Button
+            x:Name="btAjouterPersonnel"
+            MaxHeight="50"
+            Margin="521,351,129,34"
+            Content="Ajouter personnel" />
+        <Button Margin="10,105,674,258" Content="Back" Click="Button_Click" />
+        <Button
+            x:Name="btSupPersonnel"
+            MaxHeight="50"
+            Margin="321,351,329,34"
+            Content="Supprimer personnel" />
+
+    </Grid>
+</Window>

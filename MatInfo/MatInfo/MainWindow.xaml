@@ -1,0 +1,121 @@
+﻿<Window
+    x:Class="MatInfo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MatInfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="475"
+    MinWidth="800"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ApplicationData x:Name="applicationData" />
+    </Window.DataContext>
+    <Grid>
+        <Grid
+            Grid.Row="0"
+            Height="125"
+            VerticalAlignment="Top"
+            Background="#FFB3AEAE">
+            <Label
+                x:Name="lbConsultationAttribution"
+                Height="70"
+                Margin="0,28,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="Consultation des attributions"
+                FontFamily="Adobe Gothic Std B"
+                FontSize="40" />
+
+        </Grid>
+        <DataGrid
+            x:Name="dgAttribution"
+            Height="150"
+            Margin="10,156,10,0"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="false"
+            Background="#FFD2D2D2"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserSortColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesAttributions}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="1.5*"
+                    Binding="{Binding Materiel.CodeBarre}"
+                    Header="Code barre" />
+                <DataGridTextColumn
+                    Width="1.5*"
+                    Binding="{Binding Materiel.NomMateriel}"
+                    Header="Nom matériel" />
+                <DataGridTextColumn
+                    Width="1.5*"
+                    Binding="{Binding Materiel.RefConstructeur}"
+                    Header="Référentiel" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Personnel.MailPerso}"
+                    Header="Mail" />
+
+                <DataGridTextColumn
+                    Width="1*"
+                    Binding="{Binding Personnel.NomPerso}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="1*"
+                    Binding="{Binding Personnel.PrenomPerso}"
+                    Header="Prénom" />
+                <DataGridTextColumn
+                    Width="1.5*"
+                    Binding="{Binding Commentaire}"
+                    Header="Commentaire" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding DateAttribution, StringFormat=dd MMM yyyy}"
+                    Header="Date" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            x:Name="btSupprimerAttribution"
+            Width="120"
+            Height="26"
+            Margin="540,327,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Supprimer attribution" Click="btSupprimerAttribution_Click" />
+        <Button
+            x:Name="btModifPersonnel"
+            Width="150"
+            Height="49"
+            MaxHeight="50"
+            Margin="125,380,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btModifPersonnel_Click"
+            Content="Gérer personnels" />
+        <Button
+            x:Name="btModifMateriel"
+            Width="150"
+            Height="49"
+            MaxHeight="50"
+            Margin="525,380,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btModifMateriel_Click"
+            Content="Gérer matériels" />
+        <Button
+            x:Name="btAjouterAttribution"
+            Width="120"
+            Height="26"
+            MaxHeight="50"
+            Margin="140,327,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btAjouterAttribution_Click"
+            Content="Ajouter attribution" />
+
+    </Grid>
+</Window>
